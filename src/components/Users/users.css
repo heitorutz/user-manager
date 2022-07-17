@@ -1,0 +1,52 @@
+.users-content {
+    width: 100vw;
+    display: flex;
+    padding-top: 60px;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    overflow-y: scroll;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    border: 1px solid #333;
+    height: 100px;
+    width: 1000px;
+    padding: 30px;
+    gap: 30px;
+    position: relative;
+    border-radius: 8px;
+}
+
+.user-buttons {
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    top: 40%;
+    right: 10%;
+}
+
+.user-buttons button {
+    width: 110px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.inputs-change-users {
+    display: flex;
+    gap: 10px;
+}
+
+.update {
+    background-color: #087f5b;
+    color: #fff;
+    padding: 5px;
+}
+
+.delete {
+    background-color: #ff6b6b;
+    color: #fff;
+}
