@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, createContext } from "react";
+import Header from "./components/Header";
+import AddUser from "./components/AddUser";
+import Users from "./components/Users";
+
+export const GlobalContext = createContext();
 
 function App() {
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const api = async () => {
+      const data = await fetch('http://127.0.0.1:3001/api/');
+      const json = await data.json();
+      setUsers(json.data.users);
+    }
+    api();
+  }, [users]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+        <div className="components">
+          <GlobalContext.Provider value={{ users, setUsers }}>
+            <AddUser/>
+            <Users/>
+          </GlobalContext.Provider>
+        </div>
     </div>
   );
 }
